@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolzapp</title>
 
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -24,35 +28,40 @@
             <!-- Aside Bar -->
             <div class="ms_aside ">
                 <!-- Profilo -->
-                <header class="ms_bar d-flex justify-content-between">
+                <header class="d-flex p-2">
                     <div>
-                        <span>img</span>
-                        <span>Rosy</span>
+                        <img class="ms_avatar" id="ms_imgProfilo" src="../img/avatar_io.jpg" alt="immagine profilo">
                     </div>
-                    <div>
-                        <span>a</span>
-                        <span>b</span>
-                        <span>c</span>
+                    <div class="d-flex justify-content-between ms_grow">
+                        <span class="ml-1">Rosy</span>
+                        <div class="ms_size">
+                            <i class="fa-solid fa-circle-notch mr-3"></i>
+                            <i class="fa-solid fa-message mr-3"></i>
+                            <i class="fa-solid fa-ellipsis-vertical mr-3"></i>
+                        </div>
                     </div>
                 </header>
                 <!-- Notifiche -->
-                <div>
-                    <div class="d-flex ms_bar">
-                        <span>img</span>
-                        <div class="d-flex flex-column">
-                            <span>notific</span>
-                            <span>attiva</span>
+                <div class="d-flex flex-column">
+                    <div class="d-flex ms_notifiche p-3 ">
+                        <i class="fa-solid fa-bell-slash d-flex align-self-center mr-2"></i>
+                        <div class="d-flex flex-column ms_textN">
+                            <div class="fw-bolder">Ricevi notifiche di nuovi messaggi</div>
+                            <a href="#">Attiva notifiche desktop</a>
                         </div>
                     </div>
                     <!-- Ricerca -->
-                    <div class="ms_search">ricerca</div>
+                    <div class="my-1 mx-2">
+                        <input type="text" class="form-control ms_search" placeholder="Cerca o inizia una nuova chat"
+                            aria-label="Example text with button addon">
+                    </div>
                     <!-- Lista contatti -->
-                    <div v-for="(item, idex) in contacts" class="ms_lista">
-                        <div class="d-flex ms_bar">
-                            <span :src="item.avatar" ></span>
+                    <div class="ms_lista ">
+                        <div class="d-flex ms_bar p-2 border-bottom border-grey" v-for="(item, idex) in contacts">
+                            <img class="ms_avatar" :src="item.avatar"></img>
                             <div class="d-flex flex-column">
-                                <span>{{ item.name }}</span>
-                                <span>Accesso</span>
+                                <span class="fw-bolder">{{ item.name }}</span>
+                                <span class="text-secondary">Ultimo messaggio inviato</span>
                             </div>
                             <div class="ms_data">12:00</div>
                         </div>
@@ -63,28 +72,43 @@
 
             <!-- Contenitore messaggi -->
             <div class="ms_containerMsg d-flex flex-column">
-
-                <header class="ms_bar d-flex justify-content-between">
-                    <div class="d-flex">
-                        <span>img </span>
-                        <div class="d-flex flex-column">
-                            <span>nome</span>
-                            <span>ultimo acc</span>
-                        </div>
-                    </div>
+                <!-- Barra Profilo contatto -->
+                <header class="d-flex p-2">
                     <div>
-                        <span>1</span>
-                        <span>2</span>
-                        <span>3</span>
+                        <img class="ms_avatar" id="ms_imgProfilo" :src="contacts[0].avatar"></img>
+                    </div>
+                    <div class="d-flex justify-content-between ms_grow">
+                        <div class="d-flex flex-column ml-2">
+                            <span class="">{{ contacts[0].name}}</span>
+                            <span class="text-secondary">Ultimo accesso oggi alle 12:00</span>
+                        </div>
+                        <div class="ms_size">
+                            <i class="fa-solid fa-magnifying-glass mr-3"></i>
+                            <i class="fa-solid fa-paperclip mr-3"></i>
+                            <i class="fa-solid fa-ellipsis-vertical mr-3"></i>
+                        </div>
                     </div>
                 </header>
 
-                <div class="ms_chat"></div>
+                <!-- Zona chat -->
+                <div class="ms_chat">
+                    <div class="d-flex flex-column mt-5">
+                        <div class="send">Hai portato a spasso il cane?</div>
+                        <div class="send">Ricordati di stendere i panni</div>
 
-                <footer class="ms_bar">
-                    <span class="uno">:D</span>
-                    <span class="asp">scrivi</span>
-                    <span class="due">A</span>
+                        <div class="received">Tutto fatto!</div>
+                    </div>
+                </div>
+
+                <!-- Footer/Scrivi il messaggio -->
+                <footer class="py-2 px-4 d-flex ms_footer">
+                    <i class="fa-regular fa-face-smile mr-4"></i>
+                    <div class="input-group">
+                        <input type="text" class="form-control ms_search" placeholder="Scrivi un messaggio"
+                            aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
+                    </div>
+                    <i class="fa-solid fa-microphone ml-4"></i>
                 </footer>
 
             </div>
