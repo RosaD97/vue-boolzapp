@@ -1,6 +1,61 @@
 /* Reset */
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+/* Inizio main */
+.ms_bg{
+    background-color: rgb(65, 134, 65);
+    height: 100vh;
+}
+.ms_container{
+    height: 90vh;
+    width: 75vw;
+    display: flex;
+    align-self: center;
+    background-color: rgb(183, 240, 240);
+}
+/* Aside Bar */
+.ms_aside{
+    background-color: brown;
+    width: 775px;
+}
+.ms_bar{
+    height: 90px;
+    background-color: aliceblue;
+    border-bottom: 1px solid black;
+}
+.ms_search{
+    height: 70px;
+    background-color: aquamarine;
+}
+.ms_data{
+    margin-left: auto;
+}
+
+
+/* Contenitore messaggi */
+.ms_containerMsg{
+    background-color: blue;
+    width: 1433px;
+}
+.ms_chat{
+    background-color: darkgoldenrod;
+    flex-grow: 1;
+}
+.asp{
+    background-color: blue;
+}
+.uno{
+    width: 20px;
+}
+.due{
+    width: 30px;
+}
+.ms_lista{
+    overflow-y: auto;
+}
+
+/* Fine main */

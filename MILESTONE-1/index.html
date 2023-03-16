@@ -7,15 +7,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolzapp</title>
 
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Css -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <!-- Main -->
-    <main></main>
-    <!-- /Main -->
+    <div id="app" class="d-flex ms_bg">
+
+        <!-- Main -->
+        <main class="ms_container m-auto">
+
+            <!-- Aside Bar -->
+            <div class="ms_aside ">
+                <!-- Profilo -->
+                <header class="ms_bar d-flex justify-content-between">
+                    <div>
+                        <span>img</span>
+                        <span>Rosy</span>
+                    </div>
+                    <div>
+                        <span>a</span>
+                        <span>b</span>
+                        <span>c</span>
+                    </div>
+                </header>
+                <!-- Notifiche -->
+                <div>
+                    <div class="d-flex ms_bar">
+                        <span>img</span>
+                        <div class="d-flex flex-column">
+                            <span>notific</span>
+                            <span>attiva</span>
+                        </div>
+                    </div>
+                    <!-- Ricerca -->
+                    <div class="ms_search">ricerca</div>
+                    <!-- Lista contatti -->
+                    <div v-for="(item, idex) in contacts" class="ms_lista">
+                        <div class="d-flex ms_bar">
+                            <span :src="item.avatar" ></span>
+                            <div class="d-flex flex-column">
+                                <span>{{ item.name }}</span>
+                                <span>Accesso</span>
+                            </div>
+                            <div class="ms_data">12:00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/ Aside Bar -->
+
+            <!-- Contenitore messaggi -->
+            <div class="ms_containerMsg d-flex flex-column">
+
+                <header class="ms_bar d-flex justify-content-between">
+                    <div class="d-flex">
+                        <span>img </span>
+                        <div class="d-flex flex-column">
+                            <span>nome</span>
+                            <span>ultimo acc</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                    </div>
+                </header>
+
+                <div class="ms_chat"></div>
+
+                <footer class="ms_bar">
+                    <span class="uno">:D</span>
+                    <span class="asp">scrivi</span>
+                    <span class="due">A</span>
+                </footer>
+
+            </div>
+            <!--/ Contenitore messaggi -->
+
+        </main>
+        <!-- /Main -->
+
+    </div>
 
     <!-- Vue Js -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
