@@ -173,7 +173,7 @@ createApp({
     },
     methods: {
         activeChat(index) {
-            console.log(index)
+            console.log(this.active)
         },
         isActive(){
             if(this.contacts[index].messages[index].status === 'sent'){
