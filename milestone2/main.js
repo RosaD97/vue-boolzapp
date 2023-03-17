@@ -173,13 +173,12 @@ createApp({
     },
     methods: {
         activeChat(index) {
-            this.active = index;
+            console.log(index)
         },
         isActive(){
             if(this.contacts[index].messages[index].status === 'sent'){
                 this.isActive = true;
             }
         }
-
     }
 }).mount('#app');

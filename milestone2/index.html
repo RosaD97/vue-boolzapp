@@ -75,11 +75,11 @@
                 <!-- Barra Profilo contatto -->
                 <header class="d-flex p-2">
                     <div>
-                        <img class="ms_avatar" id="ms_imgProfilo" :src="contacts[active].avatar"></img>
+                        <img class="ms_avatar" id="ms_imgProfilo" :src="contacts[0].avatar"></img>
                     </div>
                     <div class="d-flex justify-content-between ms_grow">
-                        <div class="d-flex flex-column ml-2">
-                            <span class="">{{ contacts[active].name}}</span>
+                        <div class="d-flex flex-column ml-3">
+                            <span class="">{{ contacts[0].name}}</span>
                             <span class="text-secondary">Ultimo accesso oggi alle 12:00</span>
                         </div>
                         <div class="ms_size">
@@ -91,10 +91,10 @@
                 </header>
 
                 <!-- Zona chat -->
-                <div class="ms_chat ms_lista ">
+                <div class="ms_chat ms_lista">
                     <div class="d-flex flex-column mt-5">
-                        <div  class="d-flex flex-column" v-for="contact in contacts" :key="contact.name" >
-                            <div @click="activeChat(index)" v-for="message in contact.messages" :key="message.message" :class="{'sent' : isActive}">{{ message.message }}</div>
+                        <div class="d-flex flex-column" v-for="contact in contacts" :key="contact.name" >
+                            <div v-for="(message, index) in contact.messages" @click="activeChat(index)" :key="message.message" :class="{'sent' : isActive}">{{ message.message }}</div>
                         </div>
 
                         <div class="received">Tutto fatto!</div>
