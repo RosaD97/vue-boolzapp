@@ -4,6 +4,7 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            active: 0,
             contacts: [
                 {
                     name: 'Michele',
@@ -169,5 +170,16 @@ createApp({
             ]
 
         }
+    },
+    methods: {
+        activeChat(index) {
+            this.active = index;
+        },
+        isActive(){
+            if(this.contacts[index].messages[index].status === 'sent'){
+                this.isActive = true;
+            }
+        }
+
     }
 }).mount('#app');
