@@ -26,7 +26,7 @@ createApp({
                             message: 'Tutto fatto!',
                             status: 'received'
                         }
-                    ],
+                    ], 
                 },
                 {
                     name: 'Fabio',
@@ -173,12 +173,13 @@ createApp({
     },
     methods: {
         activeChat(index) {
-            console.log(this.active)
+            this.active = index;
         },
-        isActive(){
-            if(this.contacts[index].messages[index].status === 'sent'){
-                this.isActive = true;
+        isActive(index){
+            if(this.contacts[this.active].messages[index].status === 'sent'){
+                return 'sent' ;
             }
+            return 'received' ;
         }
     }
 }).mount('#app');

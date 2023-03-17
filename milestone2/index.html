@@ -57,7 +57,8 @@
                     </div>
                     <!-- Lista contatti -->
                     <div class="ms_lista ">
-                        <div class="d-flex ms_bar p-2 border-bottom border-grey" @click="activeChat(index)" v-for="(item, index) in contacts">
+                        <div class="d-flex ms_bar p-2 border-bottom border-grey" @click="activeChat(index)"
+                            v-for="(item, index) in contacts">
                             <img class="ms_avatar" :src="item.avatar"></img>
                             <div class="d-flex flex-column">
                                 <span class="fw-bolder">{{ item.name }}</span>
@@ -75,11 +76,11 @@
                 <!-- Barra Profilo contatto -->
                 <header class="d-flex p-2">
                     <div>
-                        <img class="ms_avatar" id="ms_imgProfilo" :src="contacts[0].avatar"></img>
+                        <img class="ms_avatar" id="ms_imgProfilo" :src="contacts[active].avatar"></img>
                     </div>
                     <div class="d-flex justify-content-between ms_grow">
                         <div class="d-flex flex-column ml-3">
-                            <span class="">{{ contacts[0].name}}</span>
+                            <span class="">{{ contacts[active].name}}</span>
                             <span class="text-secondary">Ultimo accesso oggi alle 12:00</span>
                         </div>
                         <div class="ms_size">
@@ -93,12 +94,10 @@
                 <!-- Zona chat -->
                 <div class="ms_chat ms_lista">
                     <div class="d-flex flex-column mt-5">
-                        <div class="d-flex flex-column" v-for="contact in contacts" :key="contact.name" >
-                            <div v-for="(message, index) in contact.messages" @click="activeChat(index)" :key="message.message" :class="{'sent' : isActive}">{{ message.message }}</div>
+                        <div class="d-flex flex-column">
+                            <div v-for="(message, index) in contacts[active].messages" @click="activeChat(index)"
+                                :class="isActive(index)">{{ message.message}}</div>
                         </div>
-
-                        <div class="received">Tutto fatto!</div>
-
                     </div>
                 </div>
 
