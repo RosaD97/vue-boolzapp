@@ -105,9 +105,9 @@
                 <footer class="py-2 px-4 d-flex ms_footer">
                     <i class="fa-regular fa-face-smile mr-4"></i>
                     <div class="input-group">
-                        <input type="text" class="form-control ms_search" placeholder="Scrivi un messaggio"
+                        <input @keyup.enter="addMsg" v-model="newText" type="text" class="form-control ms_search" placeholder="Scrivi un messaggio"
                             aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
+                        <button @click="addMsg" class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
                     </div>
                     <i class="fa-solid fa-microphone ml-4"></i>
                 </footer>

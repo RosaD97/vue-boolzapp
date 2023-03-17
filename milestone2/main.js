@@ -5,6 +5,8 @@ createApp({
     data() {
         return {
             active: 0,
+            newText: '',
+            utente: 'OOk',
             contacts: [
                 {
                     name: 'Michele',
@@ -180,6 +182,21 @@ createApp({
                 return 'sent' ;
             }
             return 'received' ;
-        }
+        },
+        addMsg() {
+            if (this.newText.length === 0) return;
+            this.contacts[this.active].messages.push({
+                date: '10/01/2020 15:51:00',
+                message: this.newText,
+                status: 'sent'
+            });
+            this.newText = '';
+            setTimeout(() => {
+                this.contacts[this.active].messages.push({
+                    date: '10/01/2020 15:51:00',
+                    message: this.utente,
+                    status: 'received'
+                });            }, 1000 );
+        },
     }
 }).mount('#app');
