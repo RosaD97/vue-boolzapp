@@ -52,13 +52,13 @@
                     </div>
                     <!-- Ricerca -->
                     <div class="my-1 mx-2">
-                        <input @keyup="search" v-model="key" type="text" class="form-control ms_search" placeholder="Cerca o inizia una nuova chat"
+                        <input @keyup="newList" v-model="key" type="text" class="form-control ms_search" placeholder="Cerca o inizia una nuova chat"
                             aria-label="Example text with button addon">
                     </div>
                     <!-- Lista contatti -->
                     <div class="ms_lista ">
                         <div class="d-flex ms_bar p-2 border-bottom border-grey" @click="activeChat(index)"
-                            v-for="(item, index) in contacts">
+                            v-for="(item, index) in newList()">
                             <img class="ms_avatar" :src="item.avatar"></img>
                             <div class="d-flex flex-column">
                                 <span class="fw-bolder">{{ item.name }}</span>

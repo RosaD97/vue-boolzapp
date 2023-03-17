@@ -29,7 +29,7 @@ createApp({
                             message: 'Tutto fatto!',
                             status: 'received'
                         }
-                    ], 
+                    ],
                 },
                 {
                     name: 'Fabio',
@@ -178,11 +178,11 @@ createApp({
         activeChat(index) {
             this.active = index;
         },
-        isActive(index){
-            if(this.contacts[this.active].messages[index].status === 'sent'){
-                return 'sent' ;
+        isActive(index) {
+            if (this.contacts[this.active].messages[index].status === 'sent') {
+                return 'sent';
             }
-            return 'received' ;
+            return 'received';
         },
         addMsg() {
             if (this.newText.length === 0) return;
@@ -197,11 +197,15 @@ createApp({
                     date: '10/01/2020 15:51:00',
                     message: this.utente,
                     status: 'received'
-                });            }, 1000 );
+                });
+            }, 1000);
         },
-        search(){
-            console.log('ciao')
-             this.contacts.filter( element => element.includes(this.key));
+        newList() {
+            if (this.key !== '') {
+                return this.contacts.filter(element => element.name.toLowerCase().includes(this.key.toLowerCase()));
+            } else {
+                return this.contacts;
+            }
         }
     }
 }).mount('#app');
