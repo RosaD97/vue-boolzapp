@@ -6,6 +6,7 @@ createApp({
         return {
             active: 0,
             newText: '',
+            key: '',
             utente: 'OOk',
             contacts: [
                 {
@@ -198,5 +199,9 @@ createApp({
                     status: 'received'
                 });            }, 1000 );
         },
+        search(){
+            console.log('ciao')
+             this.contacts.filter( element => element.includes(this.key));
+        }
     }
 }).mount('#app');

@@ -52,7 +52,7 @@
                     </div>
                     <!-- Ricerca -->
                     <div class="my-1 mx-2">
-                        <input type="text" class="form-control ms_search" placeholder="Cerca o inizia una nuova chat"
+                        <input @keyup="search" v-model="key" type="text" class="form-control ms_search" placeholder="Cerca o inizia una nuova chat"
                             aria-label="Example text with button addon">
                     </div>
                     <!-- Lista contatti -->
