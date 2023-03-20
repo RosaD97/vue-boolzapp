@@ -26,7 +26,7 @@
         <main class="ms_container m-auto">
 
             <!-- Aside Bar -->
-            <div class="ms_aside ">
+            <div class="ms_aside d-flex flex-column">
                 <!-- Profilo -->
                 <header class="d-flex p-2">
                     <div>
@@ -80,7 +80,7 @@
                     </div>
                     <div class="d-flex justify-content-between ms_grow">
                         <div class="d-flex flex-column ml-3">
-                            <span class="">{{ contacts[active].name}}</span>
+                            <span >{{ contacts[active].name}}</span>
                             <span class="text-secondary">Ultimo accesso oggi alle 12:00</span>
                         </div>
                         <div class="ms_size">
@@ -97,7 +97,7 @@
                         <div class="d-flex flex-column">
                             <div v-for="(message, index) in contacts[active].messages" @click="activeChat(index)"
                                 :class="isActive(index)">{{ message.message}}</div>
-                        </div>
+                       </div>
                     </div>
                 </div>
 
