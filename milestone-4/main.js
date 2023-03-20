@@ -201,13 +201,6 @@ createApp({
                 });
             }, 1000);
         },
-        newList() {
-            if (this.key !== '') {
-                return this.contacts.filter(element => element.name.toLowerCase().includes(this.key.toLowerCase()));
-            } else {
-                return this.contacts;
-            }
-        },
 
     }
 }).mount('#app');

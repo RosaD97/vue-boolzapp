@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolzapp</title>
+
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div id="app" class="d-flex ms_bg">
+
+        <!-- Main -->
+        <main class="ms_container m-auto">
+
+            <!-- Aside Bar -->
+            <div class="ms_aside d-flex flex-column">
+                <!-- Profilo -->
+                <header class="d-flex p-2">
+                    <div>
+                        <img class="ms_avatar" id="ms_imgProfilo" src="../img/avatar_io.jpg" alt="immagine profilo">
+                    </div>
+                    <div class="d-flex justify-content-between ms_grow">
+                        <span class="ml-1">Rosy</span>
+                        <div class="ms_size">
+                            <i class="fa-solid fa-circle-notch mr-3"></i>
+                            <i class="fa-solid fa-message mr-3"></i>
+                            <i class="fa-solid fa-ellipsis-vertical mr-3"></i>
+                        </div>
+                    </div>
+                </header>
+                <!-- Notifiche -->
+                <div class="d-flex flex-column">
+                    <div class="d-flex ms_notifiche p-3 ">
+                        <i class="fa-solid fa-bell-slash d-flex align-self-center mr-2"></i>
+                        <div class="d-flex flex-column ms_textN">
+                            <div class="fw-bolder">Ricevi notifiche di nuovi messaggi</div>
+                            <a href="#">Attiva notifiche desktop</a>
+                        </div>
+                    </div>
+                    <!-- Ricerca -->
+                    <div class="my-1 mx-2">
+                        <input @keyup="newList" v-model="key" type="text" class="form-control ms_search"
+                            placeholder="Cerca o inizia una nuova chat" aria-label="Example text with button addon">
+                    </div>
+                    <!-- Lista contatti -->
+                    <div class="ms_lista ">
+                        <div class="d-flex ms_bar p-2 border-bottom border-grey" @click="activeChat(index)"
+                            v-for="(item, index) in newList()">
+                            <img class="ms_avatar" :src="item.avatar"></img>
+                            <div class="d-flex flex-column">
+                                <span class="fw-normal">{{ item.name }}</span>
+                                <span class="text-secondary fw-lighter">Ultimo messaggio inviato</span>
+                            </div>
+                            <div class="ms_data">12:00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/ Aside Bar -->
+
+            <!-- Contenitore messaggi -->
+            <div class="ms_containerMsg d-flex flex-column">
+                <!-- Barra Profilo contatto -->
+                <header class="d-flex p-2">
+                    <div>
+                        <img class="ms_avatar" id="ms_imgProfilo" :src="contacts[active].avatar"></img>
+                    </div>
+                    <div class="d-flex justify-content-between ms_grow">
+                        <div class="d-flex flex-column ml-3">
+                            <span>{{ contacts[active].name }}</span>
+                            <span class="text-secondary">Ultimo accesso oggi alle 12:00</span>
+                        </div>
+                        <div class="ms_size">
+                            <i class="fa-solid fa-magnifying-glass mr-3"></i>
+                            <i class="fa-solid fa-paperclip mr-3"></i>
+                            <i class="fa-solid fa-ellipsis-vertical mr-3"></i>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Zona chat -->
+                <div class="ms_chat ms_lista">
+                    <div class="d-flex flex-column mt-5">
+                        <div class="d-flex flex-column">
+                            <div class="position-relative" @click="deleteMsg()" v-for="(message, index) in contacts[active].messages"
+                                :class="isActive(index)">{{ message.message}} <i class="fa-solid fa-chevron-down pl-3"></i> <span class="ms_delete invisibile"  @click="remover(index)">elimina</span></div> 
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer/Scrivi il messaggio -->
+                <footer class="py-2 px-4 d-flex ms_footer">
+                    <i class="fa-regular fa-face-smile mr-4"></i>
+                    <div class="input-group">
+                        <input @keyup.enter="addMsg" v-model="newText" type="text" class="form-control ms_search"
+                            placeholder="Scrivi un messaggio" aria-label="Recipient's username"
+                            aria-describedby="button-addon2">
+                        <button @click="addMsg" class="btn btn-outline-secondary" type="button"
+                            id="button-addon2">Send</button>
+                    </div>
+                    <i class="fa-solid fa-microphone ml-4"></i>
+                </footer>
+
+            </div>
+            <!--/ Contenitore messaggi -->
+
+        </main>
+        <!-- /Main -->
+
+    </div>
+
+    <!-- Vue Js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Js -->
+    <script src="main.js"></script>
+</body>
+
+</html>
